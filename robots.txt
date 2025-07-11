@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://skyros-lab.github.io/chmodee/sitemap.xml

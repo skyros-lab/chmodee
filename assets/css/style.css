@@ -1,0 +1,221 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top left, #00112b, #0a0f2d 60%, #000814);
+  color: #fff;
+  position: relative;
+}
+
+.bg-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url('data:image/svg+xml;utf8,\
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200">\
+<circle cx="100" cy="100" r="2" fill="rgba(255,255,255,0.05)" />\
+</svg>') repeat;
+  opacity: 0.3;
+  animation: moveBG 30s linear infinite;
+}
+
+@keyframes moveBG {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -200px -200px;
+  }
+}
+
+.bg-cubes {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.cube {
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  background: rgba(0, 255, 255, 0.15);
+  transform: rotateX(45deg) rotateY(45deg);
+  animation: floatCube var(--duration) ease-in-out infinite;
+}
+
+@keyframes floatCube {
+  0% {
+    transform: translate3d(0, 0, 0) rotateX(45deg) rotateY(45deg);
+  }
+
+  50% {
+    transform: translate3d(var(--dx), var(--dy), 0) rotateX(45deg) rotateY(45deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotateX(45deg) rotateY(45deg);
+  }
+}
+
+/* Section HERO : prend tout l’espace restant */
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+}
+
+.hero-logo {
+  position: relative;
+  text-align: center;
+  animation: fadeIn 1.2s ease-out;
+}
+
+.hero-logo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 224, 255, 0.2) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 50%;
+  animation: pulse 4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  50% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1.15);
+  }
+}
+
+.hero-logo img {
+  width: 220px;
+  border: 4px solid #00aaff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 170, 255, 0.6);
+  transition: transform 0.3s ease;
+}
+
+.hero-logo img:hover {
+  transform: scale(1.05);
+}
+
+.hero-logo h1 {
+  margin-top: 16px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  color: #00e0ff;
+  text-shadow: 0 2px 8px rgba(0, 224, 255, 0.7);
+}
+
+.hero-subtitle {
+  margin-top: 12px;
+  font-size: 1.3rem;
+  color: #b0eaff;
+  font-weight: 500;
+  animation: fadeIn 1.6s ease-out;
+}
+
+.hero-actions {
+  margin-top: 24px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #00bfff, #007acc);
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 200, 255, 0.5);
+}
+
+.hero-text-link {
+  display: block;
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #bbb;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.hero-text-link:hover {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-logo::before {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-logo h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Footer intégré dans le flux Flexbox */
+.site-footer {
+  text-align: center;
+  padding: 15px 0;
+  font-size: 0.85rem;
+  color: #aaa;
+  background: rgba(255, 255, 255, 0.1);
+  border-top: 1px solid #333;
+}

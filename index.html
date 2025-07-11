@@ -4,216 +4,56 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chmodee - Section Hero</title>
+
+  <title>Chmodee — Bot Discord antiraid, gestion des permissions, logs et sécurité avancés</title>
+
+  <meta name="description"
+    content="Chmodee sécurise votre serveur Discord avec des permissions et un antiraid intelligents, des logs complets, des alertes instantanées et une configuration moderne.">
+
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="canonical" href="https://skyros-lab.github.io/chmodee/" />
+  <meta name="robots" content="index, follow" />
+
+  <meta property="og:title" content="Chmodee — Bot Discord antiraid et sécurité automatisée" />
+  <meta property="og:description"
+    content="Permissions et antiraid intelligents, logs avancés, alertes instantanées et protections automatiques : Chmodee sécurise et structure votre serveur Discord." />
+  <meta property="og:url" content="https://skyros-lab.github.io/chmodee/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://skyros-lab.github.io/chmodee/assets/img/logo.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Chmodee — Bot Discord antiraid et sécurité automatisée" />
+  <meta name="twitter:description"
+    content="Chmodee protège votre serveur avec des systèmes avancés : antiraid, gestion des permissions, logs détaillés, alertes et configuration intelligente." />
+  <meta name="twitter:image" content="https://skyros-lab.github.io/chmodee/assets/img/logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Chmodee",
+    "url": "https://skyros-lab.github.io/chmodee/",
+    "applicationCategory": "Communication",
+    "applicationSubCategory": "Bot Discord",
+    "operatingSystem": "All",
+    "description": "Chmodee est un bot Discord intelligent qui fournit une protection antiraid automatisée, la gestion des permissions, des journaux détaillés, des alertes instantanées et une configuration moderne.",
+    "image": "https://skyros-lab.github.io/chmodee/assets/img/logo.png",
+    "author": {
+      "@type": "Person",
+      "name": "Skyros"
+    },
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;600&display=swap"
     rel="stylesheet" />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    html,
-    body {
-      height: 100%;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top left, #00112b, #0a0f2d 60%, #000814);
-      color: #fff;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .bg-particles {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><circle cx="100" cy="100" r="2" fill="rgba(255,255,255,0.05)" /></svg>') repeat;
-      opacity: 0.3;
-      animation: moveBG 30s linear infinite;
-    }
-
-    @keyframes moveBG {
-      from {
-        background-position: 0 0;
-      }
-
-      to {
-        background-position: -200px -200px;
-      }
-    }
-
-    .bg-cubes {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-
-    .cube {
-      position: absolute;
-      width: var(--size);
-      height: var(--size);
-      background: rgba(0, 255, 255, 0.15);
-      transform: rotateX(45deg) rotateY(45deg);
-      animation: floatCube var(--duration) ease-in-out infinite;
-    }
-
-    @keyframes floatCube {
-      0% {
-        transform: translate3d(0, 0, 0) rotateX(45deg) rotateY(45deg);
-      }
-
-      50% {
-        transform: translate3d(var(--dx), var(--dy), 0) rotateX(45deg) rotateY(45deg);
-      }
-
-      100% {
-        transform: translate3d(0, 0, 0) rotateX(45deg) rotateY(45deg);
-      }
-    }
-
-    .hero {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-      padding: 0 20px;
-      z-index: 1;
-    }
-
-    .hero-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      max-width: 1200px;
-      width: 100%;
-      position: relative;
-    }
-
-    .hero-logo {
-      position: relative;
-      text-align: center;
-      animation: fadeIn 1.2s ease-out;
-    }
-
-    .hero-logo::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(0, 224, 255, 0.2) 0%, transparent 70%);
-      transform: translate(-50%, -50%);
-      z-index: -1;
-      border-radius: 50%;
-      animation: pulse 4s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-
-      0%,
-      100% {
-        opacity: 0.4;
-        transform: translate(-50%, -50%) scale(1);
-      }
-
-      50% {
-        opacity: 0.7;
-        transform: translate(-50%, -50%) scale(1.15);
-      }
-    }
-
-    .hero-logo img {
-      width: 220px;
-      border: 4px solid #00aaff;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 170, 255, 0.6);
-      transition: transform 0.3s ease;
-    }
-
-    .hero-logo img:hover {
-      transform: scale(1.05);
-    }
-
-    .hero-logo h1 {
-      margin-top: 16px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 3.5rem;
-      color: #00e0ff;
-      text-shadow: 0 2px 8px rgba(0, 224, 255, 0.7);
-    }
-
-    .hero-subtitle {
-      margin-top: 12px;
-      font-size: 1.3rem;
-      color: #b0eaff;
-      font-weight: 500;
-      animation: fadeIn 1.6s ease-out;
-    }
-
-    .hero-actions {
-      margin-top: 24px;
-    }
-
-    .hero-button {
-      display: inline-block;
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      background: linear-gradient(145deg, #00bfff, #007acc);
-      color: #fff;
-      text-decoration: none;
-      box-shadow: 0 4px 12px rgba(0, 170, 255, 0.3);
-      cursor: pointer;
-      transition: all 0.3s ease;
-      position: relative;
-    }
-
-    .hero-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(0, 200, 255, 0.5);
-    }
-
-    .hero-text-link {
-      display: block;
-      margin-top: 12px;
-      font-size: 0.9rem;
-      color: #bbb;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .hero-text-link:hover {
-      color: #fff;
-    }
-
-    @media (max-width: 768px) {
-      .hero-container {
-        flex-direction: column;
-        text-align: center;
-        gap: 40px;
-      }
-
-      .hero-logo::before {
-        width: 200px;
-        height: 200px;
-      }
-
-      .hero-logo h1 {
-        font-size: 2.5rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
 <body>
@@ -223,36 +63,29 @@
   <section class="hero">
     <div class="hero-container">
       <div class="hero-logo">
-        <img src="image.png" alt="Logo Chmodee">
+        <img src="assets/img/logo.png" alt="Logo Chmodee">
         <h1>Chmodee</h1>
         <p class="hero-subtitle">Moderne. Certifié. Algorithmé.</p>
         <div class="hero-actions">
-          <a href="https://discord.com/oauth2/authorize?client_id=1310400502747496619" class="hero-button">Première fois
-            : ajoutez-moi</a>
-          <a href="https://discord.com/discovery/applications/1310400502747496619" class="hero-text-link">Découverte Discord</a>
+          <a href="https://discord.com/oauth2/authorize?client_id=1310400502747496619" class="hero-button"
+            onclick="window.open(this.href, 'popup', 'width=500,height=700'); return false;">
+            Première fois : ajoutez-moi
+          </a>
+          <a href="https://discord.com/discovery/applications/1310400502747496619" class="hero-text-link"
+            target="_blank" rel="noopener noreferrer">
+            Découverte Discord
+          </a>
         </div>
       </div>
     </div>
   </section>
 
-  <script>
-    const container = document.querySelector('.bg-cubes');
-    for (let i = 0; i < 30; i++) {
-      const cube = document.createElement('div');
-      cube.classList.add('cube');
-      const size = 10 + Math.random() * 30;
-      cube.style.setProperty('--size', `${size}px`);
-      const dx = (Math.random() * 2 - 1) * 80;
-      const dy = (Math.random() * 2 - 1) * 80;
-      cube.style.setProperty('--dx', `${dx}px`);
-      cube.style.setProperty('--dy', `${dy}px`);
-      const duration = 5 + Math.random() * 10;
-      cube.style.setProperty('--duration', `${duration}s`);
-      cube.style.left = `${Math.random() * 100}vw`;
-      cube.style.top = `${Math.random() * 100}vh`;
-      container.appendChild(cube);
-    }
-  </script>
+  <script src="assets/js/main.js" defer></script>
+  <footer class="site-footer">
+    © 2025 Chmodee — <a href="https://github.com/ton-utilisateur/ton-repo/blob/main/LICENSE" target="_blank"
+      rel="noopener noreferrer">Tous droits réservés</a>
+  </footer>
+
 </body>
 
 </html>
