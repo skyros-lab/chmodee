@@ -210,12 +210,24 @@ body {
   }
 }
 
-/* Footer intégré dans le flux Flexbox */
 .site-footer {
+  z-index: 1;
+  position: relative;
   text-align: center;
   padding: 15px 0;
   font-size: 0.85rem;
   color: #aaa;
   background: rgba(255, 255, 255, 0.1);
   border-top: 1px solid #333;
+}
+
+.site-footer a {
+  color: #66ccff;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #ffffff;
 }
